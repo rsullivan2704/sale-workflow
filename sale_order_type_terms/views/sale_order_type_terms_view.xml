@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Robert J Sullivan
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_order_type_terms_form_view" model="ir.ui.view">
+        <field name="name">sale.order.type.terms.form.view</field>
+        <field name="model">sale.order.type</field>
+        <field name="inherit_id" ref="sale_order_type.sot_sale_order_type_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/group[2]" position="after">
+                <group>
+                    <field name="sale_note" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
