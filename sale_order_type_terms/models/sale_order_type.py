@@ -8,7 +8,8 @@ class SaleOrderType(models.Model):
     _inherit = 'sale.order.type'
 
     sale_note = fields.Text(
-        string="Terms and Conditions *", 
-        translate=True, 
-        help=("If defined this will override the Default Terms and Conditions"
-        " set in Sales Settings for Sales Orders of this type."))
+        string="Terms and Conditions *",
+        translate=True,
+        help="""If defined this will override the Default Terms and Conditions
+        set in Sales Settings for all Sales Orders of this type.
+        """)

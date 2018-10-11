@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record model="sale.order.type"
+        id="custom_terms_sale_type">
+        <field name="name">Custom Sales Order</field>
+        <field name="warehouse_id" ref="stock.warehouse0"/>
+        <field name="sequence_id" ref="sale.seq_sale_order"/>
+        <field name="sale_note">These are custom terms for a Custom Sale Type.</field>
+    </record>
+</odoo>

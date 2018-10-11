@@ -10,17 +10,8 @@ class SaleOrder(models.Model):
     @api.multi
     @api.onchange('type_id')
     def onchange_type_id(self):
+        super(SaleOrder, self).onchange_type_id()
         for order in self:
-            if order.type_id.warehouse_id:
-                order.warehouse_id = order.type_id.warehouse_id
-            if order.type_id.picking_policy:
-                order.picking_policy = order.type_id.picking_policy
-            if order.type_id.payment_term_id:
-                order.payment_term_id = order.type_id.payment_term_id.id
-            if order.type_id.pricelist_id:
-                order.pricelist_id = order.type_id.pricelist_id.id
-            if order.type_id.incoterm_id:
-                order.incoterm = order.type_id.incoterm_id.id
             if order.type_id.sale_note:
                 order.note = order.type_id.sale_note
             else:
