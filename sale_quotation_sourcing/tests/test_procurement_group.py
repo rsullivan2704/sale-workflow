@@ -18,8 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #
-import openerp.tests.common as test_common
-from openerp import fields
+import odoo.tests.common as test_common
+from odoo import fields
 
 
 class TestProcurementGroup(test_common.TransactionCase):

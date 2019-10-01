@@ -26,7 +26,7 @@
     'website': "http://www.camptocamp.com",
 
     'category': 'Sales',
-    'version': '8.0.0.3.1',
+    'version': '10.0.0.3.1',
 
     'depends': ['sale_stock',
                 'purchase',
@@ -47,5 +47,5 @@
         'test/test_manual_mto_sourcing.yml',
         'test/test_manual_sourcing_dropshipping.yml',
     ],
-    'installable': False,
+    'installable': True,
 }
