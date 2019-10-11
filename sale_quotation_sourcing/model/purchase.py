@@ -32,8 +32,9 @@ class PurchaseOrderLine(models.Model):
         """ Add the PO number in the name"""
         res = []
         for line in self:
-            name = "%s - %s (%s %s)" % (
+            name = "%s - %s: %s (%s %s)" % (
                 line.order_id.name,
+                line.order_id.partner_id.name,
                 line.name,
                 line.product_qty,
                 line.product_uom.name)

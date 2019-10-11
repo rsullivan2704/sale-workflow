@@ -4,14 +4,15 @@
       <field name='model'>sale.order</field>
       <field name='inherit_id' ref='sale.view_order_form'/>
       <field name='arch' type='xml'>
-        <xpath expr='//notebook/page[@string="Order Lines"]/field/form//field[@name="name"]' position='after'>
+        <xpath expr='/form/sheet/notebook/page/field[@name="order_line"]/form//field[@name="name"]' position='after'>
           <group>
             <field name='manually_sourced'/>
             <field name='sourced_by' options="{'no_create': True}" attrs="{'invisible': [('manually_sourced', '=', 1)]}"/>
           </group>
         </xpath>
-        <xpath expr='//notebook/page[@string="Order Lines"]/field/tree//field[@name="name"]' position='after'>
+        <xpath expr='/form/sheet/notebook/page/field[@name="order_line"]/tree//field[@name="name"]' position='after'>
           <field name='manually_sourced'/>
+          <field name='sourced_by' options="{'no_create': True}" attrs="{'invisible': [('manually_sourced', '=', 1)]}"/>
         </xpath>
       </field>
     </record>

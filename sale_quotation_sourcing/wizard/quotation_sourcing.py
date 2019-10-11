@@ -32,7 +32,7 @@ class QuotationSourcingWizard(models.TransientModel):
         self.ensure_one()
         for line in self.line_ids:
             line.so_line_id.sourced_by = line.po_line_id
-        return self[0].sale_id.action_button_confirm()
+        return self[0].sale_id.action_confirm()
 
 
 class QuotationLineSource(models.TransientModel):

@@ -28,7 +28,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     @api.multi
-    def action_button_confirm(self):
+    def action_confirm(self):
         """before triggering the workflow, if some lines need sourcing, run the
         sourcing wizard, otherwise, propagate the call and do the confirmation
         of the SO.
@@ -49,7 +49,7 @@ class SaleOrder(models.Model):
                     'target': 'new',
                     }
         else:
-            return super(SaleOrder, self).action_button_confirm()
+            return super(SaleOrder, self).action_confirm()
 
     @api.model
     def _prepare_procurement_group_by_line(self, line):
@@ -110,7 +110,7 @@ class SaleOrderLine(models.Model):
         :rtype: str
 
         """
-        return purchase_order_line.order_id.location_id.usage
+        return purchase_order_line.order_id.default_location_dest_id_usage
 
     @api.model
     def _find_route_from_usage(self, usage):
@@ -140,7 +140,7 @@ class SaleOrderLine(models.Model):
         else:
             return None
 
-    @api.one
+    @api.multi
     @api.onchange('sourced_by')
     @api.constrains('sourced_by')
     def set_route_form_so(self):
@@ -158,6 +158,7 @@ class SaleOrderLine(models.Model):
         As there is no trigger decorator that works on
         non computed fields we use constrains decorator instead.
         """
+        self.ensure_one()
         if not self.sourced_by:
             return
         usage = self._get_po_location_usage(self.sourced_by)

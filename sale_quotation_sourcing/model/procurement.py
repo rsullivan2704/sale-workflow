@@ -30,7 +30,7 @@ class ProcurementOrder(models.Model):
         if the SO line is manually sourced. Otherwise, use the normal
         implementation.
         """
-        res = {}
+        res = []
         to_propagate = self.browse()
         for procurement in self:
             curr_proc = procurement
@@ -43,10 +43,10 @@ class ProcurementOrder(models.Model):
 
             if sale_line and sale_line.manually_sourced:
                 po_line = sale_line.sourced_by
-                res[procurement.id] = po_line.id
+                res += [po_line.id]
                 procurement.purchase_line_id = po_line
                 procurement.message_post(body=_('Manually sourced'))
             else:
                 to_propagate |= procurement
-        res.update(super(ProcurementOrder, to_propagate).make_po())
+        res += super(ProcurementOrder, to_propagate).make_po()
         return res
