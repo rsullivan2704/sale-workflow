@@ -18,10 +18,10 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import odoo.tests.common as test_common
+from odoo.tests.common import TransactionCase
 
 
-class TestSourcedBy(test_common.TransactionCase):
+class TestSourcedBy(TransactionCase):
 
     def test_get_route_from_usage(self):
         so_line_model = self.env['sale.order.line']
